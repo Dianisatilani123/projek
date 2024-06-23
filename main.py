@@ -357,14 +357,12 @@ def main():
             if model is not None:
                 save_model(model)  # Simpan model setelah dilatih
 
-             # Tambahkan tombol download model
             if st.button("Download Model"):
                 model_path = "train_model.sav"
                 with open(model_path, "wb") as f:
                     joblib.dump(model, f)
                 st.markdown(f"Model berhasil disimpan ke file `{model_path}`. Silakan download di bawah ini.")
-                download_button = st.download_button("Download Model", file_name=model_path, mime="application/octet-stream")
-                download_button
+                st.markdown(f"[Download Model]({model_path})", unsafe_allow_html=True)
 
             # Menampilkan form input untuk memprediksi kelayakan kandidat
             with st.sidebar:
