@@ -9,6 +9,7 @@ import base64
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
+import telegram
 
 # CSS untuk mengubah gaya tombol
 def add_custom_css():
@@ -330,6 +331,15 @@ def download_file(file_path):
             mime="application/octet-stream"
         )
         return btn
+                # Fungsi untuk mengirim umpan balik via Telegram
+def send_feedback_via_telegram():
+            token = '7488207520:AAE8NXXYJav8Tg-Mw4z_W4dsOSkewp3r_Ko'
+            chat_id = '7488207520:AAE8NXXYJav8Tg-Mw4z_W4dsOSkewp3r_Ko'
+
+            bot = telegram.Bot(token=token)
+            message = "Terima kasih telah menggunakan aplikasi kami!"
+            bot.send_message(chat_id=chat_id, text=message)
+            st.success("Umpan balik telah dikirim ke Telegram.")
 
 def main():
     st.markdown("<h1 style='text-align: center'>Aplikasi Rekrutmen Tanpa Bias Gender</h1>", unsafe_allow_html=True)
@@ -369,12 +379,21 @@ def main():
             model.fit(X_train, y_train)
             model_file = save_model(model)
 
-            # Tambahkan tombol unduh setelah model disimpan
-            if model_file:
-                st.markdown("### Download Model")
-                download_btn = download_file(model_file)
-                if download_btn:
-                    st.markdown(download_btn, unsafe_allow_html=True)
+            # Fungsi untuk menampilkan tautan unduhan model
+            def download_model(file_path):
+                with open(file_path, "rb") as file:
+                    btn = st.download_button(
+                        label="Download Model",
+                        data=file,
+                        file_name=file_path,
+                        mime="application/octet-stream"
+                    )
+                    return btn
+                 # Tambahkan tombol untuk umpan balik via Telegram
+            st.markdown("### Kirim Umpan Balik via Telegram")
+            if st.button("Kirim Umpan Balik"):
+                send_feedback_via_telegram()
+
 
             # Menampilkan form input untuk memprediksi kelayakan kandidat
             with st.sidebar:
