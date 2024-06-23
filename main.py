@@ -362,7 +362,7 @@ def main():
                 with open(model_path, "wb") as f:
                     joblib.dump(model, f)
                 st.markdown(f"Model berhasil disimpan ke file `{model_path}`. Silakan download di bawah ini.")
-                st.markdown(f"[Download Model]({model_path})", unsafe_allow_html=True)
+                st.markdown(f"[Download Model]({model_path})", unsafe_allow_html=False)
 
             # Menampilkan form input untuk memprediksi kelayakan kandidat
             with st.sidebar:
