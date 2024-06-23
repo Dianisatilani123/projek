@@ -9,7 +9,6 @@ import base64
 import matplotlib.pyplot as plt
 import seaborn as sns
 import joblib
-import telegram
 
 # CSS untuk mengubah gaya tombol
 def add_custom_css():
@@ -320,26 +319,6 @@ def save_model(model, file_path="model.pkl"):
         st.success("Model berhasil disimpan!")
     except Exception as e:
         st.error(f"Gagal menyimpan model: {str(e)}")
-    
-    # Fungsi untuk menampilkan tombol unduhan
-def download_file(file_path):
-    with open(file_path, "rb") as file:
-        btn = st.download_button(
-            label="Download Model",
-            data=file,
-            file_name=file_path,
-            mime="application/octet-stream"
-        )
-        return btn
-                # Fungsi untuk mengirim umpan balik via Telegram
-def send_feedback_via_telegram():
-            token = '7488207520:AAE8NXXYJav8Tg-Mw4z_W4dsOSkewp3r_Ko'
-            chat_id = '7488207520:AAE8NXXYJav8Tg-Mw4z_W4dsOSkewp3r_Ko'
-
-            bot = telegram.Bot(token=token)
-            message = "Terima kasih telah menggunakan aplikasi kami!"
-            bot.send_message(chat_id=chat_id, text=message)
-            st.success("Umpan balik telah dikirim ke Telegram.")
 
 def main():
     st.markdown("<h1 style='text-align: center'>Aplikasi Rekrutmen Tanpa Bias Gender</h1>", unsafe_allow_html=True)
@@ -374,26 +353,15 @@ def main():
             accuracy = evaluate_model(model, X_test, y_test)
             st.write(f"Akurasi model: {accuracy * 100:.2f}%")
 
-              # Simpan model setelah dilatih
-            model = RandomForestClassifier()
-            model.fit(X_train, y_train)
-            model_file = save_model(model)
+            # Menyimpan model setelah dilatih
+            if model is not None:
+                save_model(model)  # Simpan model setelah dilatih
 
-            # Fungsi untuk menampilkan tautan unduhan model
-            def download_model(file_path):
-                with open(file_path, "rb") as file:
-                    btn = st.download_button(
-                        label="Download Model",
-                        data=file,
-                        file_name=file_path,
-                        mime="application/octet-stream"
-                    )
-                    return btn
-                 # Tambahkan tombol untuk umpan balik via Telegram
-            st.markdown("### Kirim Umpan Balik via Telegram")
-            if st.button("Kirim Umpan Balik"):
-                send_feedback_via_telegram()
-
+              # Download trained model button
+            download_model_btn = st.button("Download Model")
+            if download_model_btn:
+                            model_file_path = "trained_model.pkl"
+                            download_file(model_file_path)   
 
             # Menampilkan form input untuk memprediksi kelayakan kandidat
             with st.sidebar:
