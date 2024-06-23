@@ -361,7 +361,7 @@ def main():
             download_model_btn = st.button("Download Model")
             if download_model_btn:
                             model_file_path = "trained_model.pkl"
-                            download_file(model_file_path)   
+                              
 
             # Menampilkan form input untuk memprediksi kelayakan kandidat
             with st.sidebar:
