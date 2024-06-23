@@ -333,8 +333,8 @@ def main():
         navigation = st.sidebar.selectbox("Navigasi", ["HOME", "Prediksi", "Laporan Keanekaragaman", "Upload Dataset"])
 
         if navigation == "Home":
-            st.write("Selamat datang Admin di Aplikasi Rekrutmen Tanpa Bias Gender!")
             st.write("Kesetaraan gender dalam dunia kerja adalah isu penting yang masih menghadapi banyak tantangan, meskipun berbagai undang-undang dan inisiatif global seperti SDGs telah mendorongnya. Partisipasi perempuan di angkatan kerja global masih jauh di bawah laki-laki, dan bias gender sering mempengaruhi proses rekrutmen. Oleh karena itu, dibuatlah sebuah aplikasi HireFair yang menggunakan algoritma random forest guna memastikan penilaian kelayakan kandidat tanpa pengaruh gender, sehingga dapat mendorong rekrutmen yang lebih adil dan inklusif.")
+            st.write("Selamat datang Admin di Aplikasi Rekrutmen Tanpa Bias Gender!")
         
         elif navigation == "Prediksi":
             # Load data
