@@ -39,12 +39,7 @@ def add_custom_css():
         """,
         unsafe_allow_html=True
     )
-    
-st.markdown("""
-<div style="text-align: justify;">
-Kesetaraan gender dalam dunia kerja adalah isu penting yang masih menghadapi banyak tantangan, meskipun berbagai undang-undang dan inisiatif global seperti SDGs telah mendorongnya. Partisipasi perempuan di angkatan kerja global masih jauh di bawah laki-laki, dan bias gender sering mempengaruhi proses rekrutmen. Oleh karena itu, dibuatlah sebuah aplikasi HireFair yang menggunakan algoritma random forest guna memastikan penilaian kelayakan kandidat tanpa pengaruh gender, sehingga dapat mendorong rekrutmen yang lebih adil dan inklusif.
-</div>
-""")
+
 # Langkah 2: Load dataset
 def load_data():
     data = pd.read_csv("dataset_recruitment.csv")
@@ -291,7 +286,7 @@ def download_file(file_path):
 
 # Halaman login
 def login():
-    st.markdown("<h2>Login Admin</h2>", unsafe_allow_html=True)
+    st.markdown("<h2>Login Admin</h2>")
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     if st.button("Login"):
@@ -326,7 +321,7 @@ def save_model(model, file_path="model.sav"):
         st.error(f"Gagal menyimpan model: {str(e)}")
 
 def main():
-    st.markdown("<h1 style='text-align: center'>Aplikasi HireFair</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 style='text-align: center'>Aplikasi HireFair</h1>")
     add_custom_css()  # Tambahkan CSS khusus untuk tombol
 
     if 'logged_in' not in st.session_state:
@@ -336,9 +331,9 @@ def main():
         login()
     else:
         # Navigasi header
-        navigation = st.sidebar.selectbox("Navigasi", ["HOME", "Prediksi", "Laporan Keanekaragaman", "Upload Dataset"])
+        navigation = st.sidebar.selectbox("Navigasi", ["Home", "Prediksi", "Laporan Keanekaragaman", "Upload Dataset"])
 
-        if navigation == "HOME":
+        if navigation == "Home":
             st.write("""
                     Kesetaraan gender dalam dunia kerja adalah isu penting yang masih menghadapi banyak tantangan, 
                     meskipun berbagai undang-undang dan inisiatif global seperti SDGs telah mendorongnya. 
