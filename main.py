@@ -39,7 +39,12 @@ def add_custom_css():
         """,
         unsafe_allow_html=True
     )
-
+    
+st.markdown("""
+<div style="text-align: justify;">
+Kesetaraan gender dalam dunia kerja adalah isu penting yang masih menghadapi banyak tantangan, meskipun berbagai undang-undang dan inisiatif global seperti SDGs telah mendorongnya. Partisipasi perempuan di angkatan kerja global masih jauh di bawah laki-laki, dan bias gender sering mempengaruhi proses rekrutmen. Oleh karena itu, dibuatlah sebuah aplikasi HireFair yang menggunakan algoritma random forest guna memastikan penilaian kelayakan kandidat tanpa pengaruh gender, sehingga dapat mendorong rekrutmen yang lebih adil dan inklusif.
+</div>
+""")
 # Langkah 2: Load dataset
 def load_data():
     data = pd.read_csv("dataset_recruitment.csv")
