@@ -113,15 +113,6 @@ def evaluate_model(model, X_test, y_test):
     ax2.set_xlabel("Prediksi")
     ax2.set_ylabel("Aktual")
     st.pyplot(fig2)
-    
-   # Visualisasi precision, recall, dan F1-score
-    report_df = pd.DataFrame(report).transpose().iloc[:-3, :3]  # Mengambil data precision, recall, f1-score untuk setiap kelas
-    fig3, ax3 = plt.subplots(figsize=(10, 6))
-    report_df.plot(kind='bar', ax=ax3)
-    ax3.set_title("Precision, Recall, dan F1-Score")
-    ax3.set_xlabel("Kelas")
-    ax3.set_ylabel("Nilai")
-    st.pyplot(fig3)
 
     return accuracy
 
