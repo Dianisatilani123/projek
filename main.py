@@ -95,7 +95,7 @@ def evaluate_model(model, X_test, y_test):
     st.write(f"Akurasi model: {accuracy * 100:.2f}%")
     st.write("Classification Report:")
     st.write(report)
-
+    st.write(matrix)
 
     # Visualisasi distribusi hasil prediksi
     fig1, ax1 = plt.subplots(figsize=(10, 6))
@@ -112,7 +112,7 @@ def evaluate_model(model, X_test, y_test):
     ax2.set_xlabel("Prediksi")
     ax2.set_ylabel("Aktual")
     st.pyplot(fig2)
-
+    
    # Visualisasi precision, recall, dan F1-score
     report_df = pd.DataFrame(report).transpose().iloc[:-3, :3]  # Mengambil data precision, recall, f1-score untuk setiap kelas
     fig3, ax3 = plt.subplots(figsize=(10, 6))
