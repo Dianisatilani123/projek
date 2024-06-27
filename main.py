@@ -286,7 +286,7 @@ def download_file(file_path):
 
 # Halaman login
 def login():
-    st.markdown("<h2>Login Admin</h2>")
+    st.markdown("<h2>Login Admin</h2>", unsafe_allow_html=True)
     username = st.text_input("Username")
     password = st.text_input("Password", type="password")
     if st.button("Login"):
@@ -321,7 +321,7 @@ def save_model(model, file_path="model.sav"):
         st.error(f"Gagal menyimpan model: {str(e)}")
 
 def main():
-    st.markdown("<h1 style='text-align: center'>Aplikasi HireFair</h1>")
+    st.markdown("<h1 style='text-align: center'>Aplikasi HireFair</h1>", unsafe_allow_html=True)
     add_custom_css()  # Tambahkan CSS khusus untuk tombol
 
     if 'logged_in' not in st.session_state:
