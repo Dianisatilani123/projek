@@ -95,6 +95,7 @@ def evaluate_model(model, X_test, y_test):
     st.write(f"Akurasi model: {accuracy * 100:.2f}%")
     st.write("Classification Report:")
     st.write(report)
+    st.write("Confusion Matrix:")
     st.write(matrix)
 
     # Visualisasi distribusi hasil prediksi
