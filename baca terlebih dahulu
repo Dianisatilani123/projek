@@ -1,0 +1,6 @@
+USER LOGIN
+Username : admin
+Sandi    : admin123
+
+ATURAN UPLOAD DATASET, KARENA PADA NAVIGASI INI TIDAK SEMBARANG DATASET YANG BISA DIPREDIKSI
+CARANYA : Download file format_upload_dataset untuk menguji model di navigasi upload dataset
